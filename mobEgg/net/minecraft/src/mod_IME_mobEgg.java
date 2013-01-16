@@ -132,8 +132,8 @@ public class mod_IME_mobEgg extends BaseMod {
 	@Override
 	public void keyboardEvent(KeyBinding keybinding) {
 		// GUI‚ðŠJ‚­
-		if (MMM_Helper.isForge && ModLoader.isGUIOpen(null)) {
-//		if (mc != null && mc.theWorld != null && mc.currentScreen == null) {
+		if (MMM_Helper.isClient && ModLoader.isGUIOpen(null)) {
+//		if (MMM_Helper.mc != null && mc.theWorld != null && mc.currentScreen == null) {
 			ModLoader.openGUI(MMM_Helper.mc.thePlayer, new IME_GuiMobEgg(MMM_Helper.mc.theWorld));
 		}
 	}
