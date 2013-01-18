@@ -1,4 +1,4 @@
-package net.minecraft.src;
+ï»¿package net.minecraft.src;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,20 +22,20 @@ import net.minecraft.client.Minecraft;
 
 public class mod_IME_mobEgg extends BaseMod {
 
-	@MLProp(info="MobEgg's ItemID(on Editors number)")		// shiftedIndex’l
+	@MLProp(info="MobEgg's ItemID(on Editors number)")		// shiftedIndexå€¤
 	public static int ItemID = 22201;			
-	@MLProp(info="Spown mob List.(null is All random)")		// İ’è‚³‚ê‚Ä‚¢‚éMOB‚ÌƒŠƒXƒg
+	@MLProp(info="Spown mob List.(null is All random)")		// è¨­å®šã•ã‚Œã¦ã„ã‚‹MOBã®ãƒªã‚¹ãƒˆ
 	public static String mobList = "Spider,Zombie,Creeper,Cow,Enderman,PigZombie,Squid,Wolf,Ghast,Pig,Slime,Sheep,Skeleton,Silverfish,Giant,Chicken";
-	@MLProp(info="RandomEgg Selection.")					// ƒ‰ƒ“ƒ_ƒ€‘ÎÛ‚ÌƒŠƒXƒg
+	@MLProp(info="RandomEgg Selection.")					// ãƒ©ãƒ³ãƒ€ãƒ å¯¾è±¡ã®ãƒªã‚¹ãƒˆ
 	public static String randomList = "";
-	@MLProp(info="GUI Enable(dont't use GUI is false)")		// GUI‚Ì—LŒø–³Œø
+	@MLProp(info="GUI Enable(dont't use GUI is false)")		// GUIã®æœ‰åŠ¹ç„¡åŠ¹
 	public static boolean guiEnable = true;		
-	@MLProp(info="Exclusion mob List.")						// ƒ‰ƒ“ƒ_ƒ€‘ÎÛ‚ÌƒŠƒXƒg
+	@MLProp(info="Exclusion mob List.")						// ãƒ©ãƒ³ãƒ€ãƒ å¯¾è±¡ã®ãƒªã‚¹ãƒˆ
 	public static String exclusionList = "";
 
-	// ƒRƒ“ƒtƒBƒO€–Ú‚ğì‚é‚Æ‚«‚Í@MLProp‚ğ—LŒø‚É‚·‚é
+	// ã‚³ãƒ³ãƒ•ã‚£ã‚°é …ç›®ã‚’ä½œã‚‹ã¨ãã¯@MLPropã‚’æœ‰åŠ¹ã«ã™ã‚‹
 //	@MLProp(info="Crafting ItemID")
-	public static int CraftID = 344;	// —‘
+	public static int CraftID = 344;	// åµ
 
 	
 	public static Item mobegg;
@@ -65,9 +65,9 @@ public class mod_IME_mobEgg extends BaseMod {
 	public void load() {
 		entityMap = new TreeMap<String, Entity>();
 		
-		// cfg‚©‚ç‚Ì’l‚ğ‰ğÍ
+		// cfgã‹ã‚‰ã®å€¤ã‚’è§£æ
 		if (mobList != "") {
-			// —‘‚Ìİ’è’l
+			// åµã®è¨­å®šå€¤
 			String s[] = mobList.split(",");
 			for (int i = 0; i < mobNames.length; i++) {
 				if (i < s.length){
@@ -78,14 +78,14 @@ public class mod_IME_mobEgg extends BaseMod {
 			}
 		}
 		if (exclusionList != "") {
-			// œŠO‘ÎÛMOB
+			// é™¤å¤–å¯¾è±¡MOB
 			String s[] = exclusionList.split(",");
 			for (String t : s) {
 				exclusions.add(t.trim());
 			}
 		}
 		if (randomList != "") {
-			// randomEgg‘ÎÛMOB
+			// randomEggå¯¾è±¡MOB
 			String s[] = randomList.split(",");
 			for (String t : s) {
 				t = t.trim();
@@ -95,17 +95,17 @@ public class mod_IME_mobEgg extends BaseMod {
 			}
 		}
 		
-		// ƒAƒCƒeƒ€‚Ìì¬
+		// ã‚¢ã‚¤ãƒ†ãƒ ã®ä½œæˆ
 		mobegg = new IME_ItemMobEgg(ItemID - 256).setIconCoord(9, 9).setItemName("MobEgg").setCreativeTab(CreativeTabs.tabMisc);
 		ModLoader.addName(mobegg, "MobEgg");
 		for (int i = 0; i < 16; i++) {
-			// ƒŒƒVƒs‚Ì’Ç‰Á
+			// ãƒ¬ã‚·ãƒ”ã®è¿½åŠ 
 			if (Item.itemsList[CraftID] instanceof ItemBlock)
 				ModLoader.addShapelessRecipe(new ItemStack(mobegg, 1, i), new Object[]{Block.blocksList[CraftID], new ItemStack(Item.dyePowder, 1, i)});
 			else
 				ModLoader.addShapelessRecipe(new ItemStack(mobegg, 1, i), new Object[]{Item.itemsList[CraftID], new ItemStack(Item.dyePowder, 1, i)});
 		}
-		// Entity‚Ì“o˜^
+		// Entityã®ç™»éŒ²
 		classMobEgg = MMM_Helper.getEntityClass(this, "IME_EntityMobEgg");
 		if (classMobEgg == null) {
 			return;
@@ -115,7 +115,7 @@ public class mod_IME_mobEgg extends BaseMod {
 		ModLoader.addEntityTracker(this, classMobEgg, luid, 64, 10, true);
 		
 		
-		// GUI ‚ğŠJ‚­ƒL[‚Ì“o˜^‚Æ–¼Ì•ÏŠ·ƒe[ƒuƒ‹‚Ì“o˜^
+		// GUI ã‚’é–‹ãã‚­ãƒ¼ã®ç™»éŒ²ã¨åç§°å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«ã®ç™»éŒ²
 		if (guiEnable && MMM_Helper.isClient) {
 			String s = "key.mobEgg";
 			ModLoader.registerKey(this, new KeyBinding(s, 22), false);
@@ -125,13 +125,13 @@ public class mod_IME_mobEgg extends BaseMod {
 					);
 		}
 		
-		// ƒfƒBƒXƒyƒ“ƒT[
+		// ãƒ‡ã‚£ã‚¹ãƒšãƒ³ã‚µãƒ¼
 		ModLoader.addDispenserBehavior(mobegg, new IME_BehaviorMobEggDispense(null));
 	}
 
 	@Override
 	public void keyboardEvent(KeyBinding keybinding) {
-		// GUI‚ğŠJ‚­
+		// GUIã‚’é–‹ã
 		if (MMM_Helper.isClient && ModLoader.isGUIOpen(null)) {
 //		if (MMM_Helper.mc != null && mc.theWorld != null && mc.currentScreen == null) {
 			ModLoader.openGUI(MMM_Helper.mc.thePlayer, new IME_GuiMobEgg(MMM_Helper.mc.theWorld));
@@ -140,23 +140,23 @@ public class mod_IME_mobEgg extends BaseMod {
 
 	@Override
 	public void addRenderer(Map map) {
-		// “Š‚°‚½‚Æ‚«‚ÌRender‚ğ’Ç‰Á
+		// æŠ•ã’ãŸã¨ãã®Renderã‚’è¿½åŠ 
 		map.put(IME_EntityMobEgg.class, new IME_RenderMobEgg(Item.egg.getIconFromDamage(0)));
 	}
 
 	public static String getInnerEntityName(int index) {
-		// ƒCƒ“ƒfƒbƒNƒX‚É‰‚¶‚½İ’èMOB‚Ì–¼Ì‚ğ•Ô‚·
+		// ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¿œã˜ãŸè¨­å®šMOBã®åç§°ã‚’è¿”ã™
 		if (mobNames.length <= index) return "";
 		return mobNames[index];
 	}
 
 	public static void saveParamater() {
-		// mobEgg“™‚Ì‘I‘ğî•ñ‚ğcfgƒtƒ@ƒCƒ‹‚É•Û‘¶
+		// mobEggç­‰ã®é¸æŠæƒ…å ±ã‚’cfgãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜
 		File cfgdir = new File(Minecraft.getMinecraftDir(), "/config/");
 		if (cfgdir.exists()) {
 			File file = new File(cfgdir, (new StringBuilder(String.valueOf(mod_IME_mobEgg.class.getSimpleName()))).append(".cfg").toString());
 			if (file.exists() && file.canRead() && file.canWrite()) {
-				// ƒRƒ“ƒtƒBƒOƒtƒ@ƒCƒ‹‚ª—L‚é
+				// ã‚³ãƒ³ãƒ•ã‚£ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãŒæœ‰ã‚‹
 				try {
 					BufferedReader breader = new BufferedReader(new FileReader(file));
 					String rl;
@@ -215,7 +215,7 @@ public class mod_IME_mobEgg extends BaseMod {
 					}
 					breader.close();
 					
-					// •Û‘¶
+					// ä¿å­˜
 					if(!lines.isEmpty() && (file.exists() || file.createNewFile()) && file.canWrite())
 					{
 						BufferedWriter bwriter = new BufferedWriter(new FileWriter(file));
@@ -235,7 +235,7 @@ public class mod_IME_mobEgg extends BaseMod {
 
 	@Override
 	public Entity spawnEntity(int entityId, World world, double scaledX, double scaledY, double scaledZ) {
-		// Modloader‰º‚Å‚Í“Æ©‚É¶¬‚·‚é‚Ì‚Å—v‚ç‚È‚¢B
+		// Modloaderä¸‹ã§ã¯ç‹¬è‡ªã«ç”Ÿæˆã™ã‚‹ã®ã§è¦ã‚‰ãªã„ã€‚
 		if (!MMM_Helper.isForge) return null;
 		
 		try {
@@ -253,7 +253,7 @@ public class mod_IME_mobEgg extends BaseMod {
 	// Modloader
 	@Override
 	public Packet23VehicleSpawn getSpawnPacket(Entity var1, int var2) {
-		// ê—p—‘‚ğ”­¶‚³‚¹‚é
+		// å°‚ç”¨åµã‚’ç™ºç”Ÿã•ã›ã‚‹
 		EntityLiving lentity = ((IME_EntityMobEgg)var1).thrower;
 		return new IME_PacketMobEgg(var1, 0, lentity == null ? 0 : lentity.entityId);
 	}

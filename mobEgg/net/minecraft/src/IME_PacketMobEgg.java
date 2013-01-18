@@ -1,4 +1,4 @@
-package net.minecraft.src;
+﻿package net.minecraft.src;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

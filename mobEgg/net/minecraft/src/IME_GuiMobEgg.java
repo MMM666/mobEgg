@@ -1,4 +1,4 @@
-package net.minecraft.src;
+ï»¿package net.minecraft.src;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -12,7 +12,7 @@ public class IME_GuiMobEgg extends GuiScreen {
     private static RenderItem itemRenderer = new RenderItem();
     public int selectedNum[];
 	
-    public static final String def_randomEgg = "\247cRandomEgg";	// •\¦—p‚Ì•¶š—ñ
+    public static final String def_randomEgg = "\247cRandomEgg";	// è¡¨ç¤ºç”¨ã®æ–‡å­—åˆ—
     protected World fworld;
 
 
@@ -29,7 +29,7 @@ public class IME_GuiMobEgg extends GuiScreen {
         for(int k = 0; k < j; k++) {
         	String ss = mod_IME_mobEgg.mobNames[k];
         	if (ss == null || ss.isEmpty()) {
-        		// ‹ó”’‚Ìê‡‚Íƒ‰ƒ“ƒ_ƒ€
+        		// ç©ºç™½ã®å ´åˆã¯ãƒ©ãƒ³ãƒ€ãƒ 
         		ss = def_randomEgg;
         		selectedNum[k] = -1;
         	} else {
@@ -57,7 +57,7 @@ public class IME_GuiMobEgg extends GuiScreen {
         if(guibutton.id < 100)
         {
         	int i = guibutton.id;
-        	// shift‚Å‹t‰ñ‚µ
+        	// shiftã§é€†å›ã—
         	if (Keyboard.isKeyDown(42) || Keyboard.isKeyDown(54)) {
         		if (--selectedNum[i] < -1) {
         			selectedNum[i] = mod_IME_mobEgg.entityMap.size() - 1;
@@ -93,7 +93,7 @@ public class IME_GuiMobEgg extends GuiScreen {
         drawDefaultBackground();
         super.drawScreen(i, j, f);
         
-        // —‘‚Æõ—¿‚Ì•\¦
+        // åµã¨æŸ“æ–™ã®è¡¨ç¤º
         ItemStack itemstack = new ItemStack(mod_IME_mobEgg.mobegg, 1, 0);
         ItemStack itemstack2 = new ItemStack(Item.dyePowder, 1, 0);
         

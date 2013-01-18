@@ -1,4 +1,4 @@
-package net.minecraft.src;
+﻿package net.minecraft.src;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;

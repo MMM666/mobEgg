@@ -1,4 +1,4 @@
-package net.minecraft.src;
+ï»¿package net.minecraft.src;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class IME_ItemMobEgg extends ItemEgg {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
-		// “Š‚°‚½‚Æ‚«‚Ìˆ—
+		// æŠ•ã’ãŸã¨ãã®å‡¦ç†
 		if (!entityplayer.capabilities.isCreativeMode) {
 			itemstack.stackSize--;
 		}
@@ -54,7 +54,7 @@ public class IME_ItemMobEgg extends ItemEgg {
 
 	@Override
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		// ƒNƒŠƒGƒCƒeƒBƒu‚Ìƒ^ƒu‚É’Ç‰Á‚·‚éƒTƒuƒAƒCƒeƒ€
+		// ã‚¯ãƒªã‚¨ã‚¤ãƒ†ã‚£ãƒ–ã®ã‚¿ãƒ–ã«è¿½åŠ ã™ã‚‹ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ 
 		for (int i = 0; i < 16; i++) {
 			par3List.add(new ItemStack(mod_IME_mobEgg.mobegg, 1, i));
 		}
