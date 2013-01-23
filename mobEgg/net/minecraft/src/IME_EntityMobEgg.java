@@ -1,4 +1,4 @@
-ï»¿package net.minecraft.src;
+package net.minecraft.src;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -34,15 +34,15 @@ public class IME_EntityMobEgg extends EntityThrowable {
 
 	@Override
 	protected void onImpact(MovingObjectPosition movingobjectposition) {
-		// é£›ç¿”ä½“ã®æ¥è§¦åˆ¤å®š
+		// ”òãÄ‘Ì‚ÌÚG”»’è
 		if(movingobjectposition.entityHit != null) {
 			if(!movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower), 0));
 		}
 		if(!worldObj.isRemote) {
-			// ç€å¼¾æ™‚å‡¦ç†
+			// ’…’eˆ—
 			String s = mod_IME_mobEgg.getInnerEntityName(eggItemStack.getItemDamage());
 			if (s.isEmpty()) {
-				// è¨­å®šãŒãªã„å ´åˆã¯ãƒ©ãƒ³ãƒ€ãƒ ã§å¯¾è±¡ã‚’æŒ‡å®š
+				// İ’è‚ª‚È‚¢ê‡‚Íƒ‰ƒ“ƒ_ƒ€‚Å‘ÎÛ‚ğw’è
 				List<String> ll = new ArrayList<String>();
 				for (Entry<String, Boolean> t : mod_IME_mobEgg.randomMap.entrySet()) {
 					if (t.getValue()) {
@@ -53,7 +53,7 @@ public class IME_EntityMobEgg extends EntityThrowable {
 				s = ll.get(rand.nextInt(ll.size()));
 			}
 			
-			// EntityListã‹ã‚‰æ‹›å–šå¯¾è±¡ã‚’æŠ½å‡ºã™ã‚‹
+			// EntityList‚©‚çµŠ«‘ÎÛ‚ğ’Šo‚·‚é
 			Entity entity = EntityList.createEntityByName(s, worldObj);
 			if (entity instanceof EntityLiving) {
 				((EntityLiving)entity).initCreature();

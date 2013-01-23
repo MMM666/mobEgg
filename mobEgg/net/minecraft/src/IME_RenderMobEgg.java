@@ -1,4 +1,4 @@
-ï»¿package net.minecraft.src;
+package net.minecraft.src;
 
 import org.lwjgl.opengl.GL11;
 
@@ -13,7 +13,7 @@ public class IME_RenderMobEgg extends RenderSnowball {
 		IME_EntityMobEgg entitymobegg = (IME_EntityMobEgg)entity;
 		ItemStack itemstack = entitymobegg.eggItemStack;
 		
-		// æŠ•ã’ãŸåµã«è‰²ã‚’ã¤ã‘ã‚‹
+		// “Š‚°‚½—‘‚ÉF‚ð‚Â‚¯‚é
 		int k = Item.itemsList[itemstack.itemID].getColorFromItemStack(itemstack, 0);
 		float f15 = (float)(k >> 16 & 0xff) / 255F;
 		float f17 = (float)(k >> 8 & 0xff) / 255F;

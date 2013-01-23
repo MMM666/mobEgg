@@ -1,4 +1,4 @@
-﻿package net.minecraft.src;
+package net.minecraft.src;
 
 import org.lwjgl.input.Mouse;
 
@@ -39,7 +39,7 @@ public class IME_GuiMobEggRandom extends MMM_GuiMobSelect {
     @Override
     protected void actionPerformed(GuiButton guibutton) {
         if(guibutton.id == 200) {
-        	// 親GUIへ戻る
+        	// �eGUI�֖߂�
             mc.displayGuiScreen(parentScreen);
         }
     }
