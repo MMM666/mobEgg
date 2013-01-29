@@ -48,7 +48,7 @@ public class mod_IME_mobEgg extends BaseMod {
 
 	@Override
 	public String getVersion() {
-		return "1.4.7-1";
+		return "1.4.7-2";
 	}
 
 	@Override
@@ -132,7 +132,7 @@ public class mod_IME_mobEgg extends BaseMod {
 	@Override
 	public void keyboardEvent(KeyBinding keybinding) {
 		// GUI‚ðŠJ‚­
-		if (MMM_Helper.isClient && ModLoader.isGUIOpen(null)) {
+		if (MMM_Helper.isClient && MMM_Helper.mc.currentScreen == null) {
 //		if (MMM_Helper.mc != null && mc.theWorld != null && mc.currentScreen == null) {
 			ModLoader.openGUI(MMM_Helper.mc.thePlayer, new IME_GuiMobEgg(MMM_Helper.mc.theWorld));
 		}
