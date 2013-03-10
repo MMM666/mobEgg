@@ -1,7 +1,6 @@
 package net.minecraft.src;
 
 import java.lang.reflect.Constructor;
-import java.util.ArrayList;
 import java.util.List;
 
 public class IME_ItemMobEgg extends ItemEgg {

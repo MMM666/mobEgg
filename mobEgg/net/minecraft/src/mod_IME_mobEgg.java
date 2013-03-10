@@ -42,7 +42,7 @@ public class mod_IME_mobEgg extends BaseMod {
 
 	@Override
 	public String getVersion() {
-		return "1.4.7-2";
+		return "1.4.7-3";
 	}
 
 	@Override
@@ -126,10 +126,7 @@ public class mod_IME_mobEgg extends BaseMod {
 	@Override
 	public void keyboardEvent(KeyBinding keybinding) {
 		// GUIを開く
-		if (MMM_Helper.isClient && MMM_Helper.mc.currentScreen == null) {
-//		if (MMM_Helper.mc != null && mc.theWorld != null && mc.currentScreen == null) {
-			ModLoader.openGUI(MMM_Helper.mc.thePlayer, new IME_GuiMobEgg(MMM_Helper.mc.theWorld));
-		}
+		IME_GuiMobEgg.keyboardEvent(keybinding);
 	}
 
 	@Override
@@ -142,89 +139,6 @@ public class mod_IME_mobEgg extends BaseMod {
 		// インデックスに応じた設定MOBの名称を返す
 		if (mobNames.length <= index) return "";
 		return mobNames[index];
-	}
-
-	public static void saveParamater() {
-		// mobEgg等の選択情報をcfgファイルに保存
-		File cfgdir = new File(Minecraft.getMinecraftDir(), "/config/");
-		if (cfgdir.exists()) {
-			File file = new File(cfgdir, (new StringBuilder(String.valueOf(mod_IME_mobEgg.class.getSimpleName()))).append(".cfg").toString());
-			if (file.exists() && file.canRead() && file.canWrite()) {
-				// コンフィグファイルが有る
-				try {
-					BufferedReader breader = new BufferedReader(new FileReader(file));
-					String rl;
-					String s;
-					List<String> lines = new ArrayList<String>();
-					while ((rl = breader.readLine()) != null) {
-						s = "mobList";
-						if (rl.startsWith(s)) {
-							StringBuilder sb = new StringBuilder();
-							for (String t : mobNames) {
-								if (sb.length() > 0) {
-									sb.append(",");
-								} else {
-									sb.append(s).append("=");
-								}
-								if (t != null) {
-									sb.append(t);
-								}
-							}
-							lines.add(sb.toString());
-							continue;
-						}
-						s = "randomList";
-						if (rl.startsWith(s)) {
-							StringBuilder sb = new StringBuilder();
-							for (Entry<String, Boolean> t : randomMap.entrySet()) {
-								if (t.getValue()) {
-									if (sb.length() > 0) {
-										sb.append(",");
-									} else {
-										sb.append(s).append("=");
-									}
-									sb.append(t.getKey());
-								}
-							}
-							lines.add(sb.toString());
-							continue;
-						}
-						s = "exclusionList";
-						if (rl.startsWith(s)) {
-							StringBuilder sb = new StringBuilder();
-							for (String t : exclusions) {
-								if (sb.length() > 0) {
-									sb.append(",");
-								} else {
-									sb.append(s).append("=");
-								}
-								if (t != null) {
-									sb.append(t);
-								}
-							}
-							lines.add(sb.toString());
-							continue;
-						}
-						lines.add(rl);
-					}
-					breader.close();
-					
-					// 保存
-					if(!lines.isEmpty() && (file.exists() || file.createNewFile()) && file.canWrite())
-					{
-						BufferedWriter bwriter = new BufferedWriter(new FileWriter(file));
-						for (String t : lines.toArray(new String[0])) {
-							bwriter.write(t);
-							bwriter.newLine();
-						}
-						bwriter.close();
-					}
-				} catch (Exception e) {
-					System.out.println("cgf file fail.");
-				}
-			}
-		}
-		
 	}
 
 	@Override
