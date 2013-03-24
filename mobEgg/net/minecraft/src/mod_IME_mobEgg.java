@@ -42,7 +42,7 @@ public class mod_IME_mobEgg extends BaseMod {
 
 	@Override
 	public String getVersion() {
-		return "1.4.7-3";
+		return "1.5.1-1";
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class mod_IME_mobEgg extends BaseMod {
 		}
 		
 		// アイテムの作成
-		mobegg = new IME_ItemMobEgg(ItemID - 256).setIconCoord(9, 9).setItemName("MobEgg").setCreativeTab(CreativeTabs.tabMisc);
+		mobegg = new IME_ItemMobEgg(ItemID - 256).setUnlocalizedName("MobEgg").setCreativeTab(CreativeTabs.tabMisc);
 		ModLoader.addName(mobegg, "MobEgg");
 		for (int i = 0; i < 16; i++) {
 			// レシピの追加
@@ -100,11 +100,11 @@ public class mod_IME_mobEgg extends BaseMod {
 				ModLoader.addShapelessRecipe(new ItemStack(mobegg, 1, i), new Object[]{Item.itemsList[CraftID], new ItemStack(Item.dyePowder, 1, i)});
 		}
 		// Entityの登録
-		classMobEgg = MMM_Helper.getEntityClass(this, "IME_EntityMobEgg");
+		classMobEgg = MMM_Helper.getForgeClass(this, "IME_EntityMobEgg");
 		if (classMobEgg == null) {
 			return;
 		}
-		int luid = ModLoader.getUniqueEntityId();
+		int luid = MMM_Helper.getNextEntityID(false);
 		ModLoader.registerEntityID(classMobEgg, "mobEgg", luid);
 		ModLoader.addEntityTracker(this, classMobEgg, luid, 64, 10, true);
 		
@@ -132,7 +132,7 @@ public class mod_IME_mobEgg extends BaseMod {
 	@Override
 	public void addRenderer(Map map) {
 		// 投げたときのRenderを追加
-		map.put(IME_EntityMobEgg.class, new IME_RenderMobEgg(Item.egg.getIconFromDamage(0)));
+		map.put(IME_EntityMobEgg.class, new IME_RenderMobEgg(Item.egg));
 	}
 
 	public static String getInnerEntityName(int index) {

@@ -4,8 +4,8 @@ import org.lwjgl.opengl.GL11;
 
 public class IME_RenderMobEgg extends RenderSnowball {
 
-	public IME_RenderMobEgg(int i) {
-		super(i);
+	public IME_RenderMobEgg(Item pItem) {
+		super(pItem);
 	}
 
 	@Override

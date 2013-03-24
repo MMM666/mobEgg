@@ -30,7 +30,7 @@ public class IME_GuiMobEggRandom extends MMM_GuiMobSelect {
 		super.initGui();
 		StringTranslate stringtranslate = StringTranslate.getInstance();
 
-		controlList.add(new GuiButton(200, width / 2 - 100, height - 40, 200,
+		buttonList.add(new GuiButton(200, width / 2 - 100, height - 40, 200,
 				20, stringtranslate.translateKey("gui.done")));
 	}
 
@@ -48,11 +48,14 @@ public class IME_GuiMobEggRandom extends MMM_GuiMobSelect {
 	}
 
 	@Override
-	public void clickSlot(int pIndex) {
-		String s = entityMap.keySet().toArray()[pIndex].toString();
-		boolean rselect = mod_IME_mobEgg.randomMap.get(s);
-		mod_IME_mobEgg.randomMap.put(s, Boolean.valueOf(!rselect));
-		mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
+	public void clickSlot(int pIndex, boolean pDoubleClick, String pName,
+			EntityLiving pEntity) {
+		if (pDoubleClick) {
+			String s = entityMap.keySet().toArray()[pIndex].toString();
+			boolean rselect = mod_IME_mobEgg.randomMap.get(s);
+			mod_IME_mobEgg.randomMap.put(s, Boolean.valueOf(!rselect));
+			mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
+		}
 	}
 
 	@Override

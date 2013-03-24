@@ -46,13 +46,13 @@ public class IME_GuiMobEgg extends GuiScreen {
 					}
 				}
 			}
-			controlList.add(new GuiSmallButton(k, (width / 2 - 155) + (k % 2)
+			buttonList.add(new GuiSmallButton(k, (width / 2 - 155) + (k % 2)
 					* 160, height / 6 + 24 * (k >> 1) - 24, ss));
 		}
 
-		controlList.add(new GuiSmallButton(200, width / 2 + 20,
+		buttonList.add(new GuiSmallButton(200, width / 2 + 20,
 				height / 6 + 168, 120, 20, "Save"));
-		controlList.add(new GuiSmallButton(300, width / 2 - 140,
+		buttonList.add(new GuiSmallButton(300, width / 2 - 140,
 				height / 6 + 168, 120, 20, "Random Select"));
 	}
 
