@@ -60,9 +60,9 @@ public class IME_ItemMobEgg extends ItemEgg {
 	}
 
 	@Override
-	public void updateIcons(IconRegister par1IconRegister) {
-		super.updateIcons(par1IconRegister);
-		iconIndex = par1IconRegister.registerIcon("monsterPlacer");
+	public void registerIcons(IconRegister par1IconRegister) {
+//		super.registerIcons(par1IconRegister);
+		itemIcon = par1IconRegister.registerIcon("monsterPlacer");
 	}
 
 }
