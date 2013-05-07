@@ -42,7 +42,7 @@ public class mod_IME_mobEgg extends BaseMod {
 
 	@Override
 	public String getVersion() {
-		return "1.5.1-1";
+		return "1.5.2-1";
 	}
 
 	@Override
@@ -57,6 +57,9 @@ public class mod_IME_mobEgg extends BaseMod {
 	
 	@Override
 	public void load() {
+		// MMMLibのRevisionチェック
+		MMM_Helper.checkRevision("1");
+		
 		entityMap = new TreeMap<String, Entity>();
 		
 		// cfgからの値を解析
