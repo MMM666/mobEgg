@@ -41,11 +41,6 @@ public class mod_IME_mobEgg extends BaseMod {
 
 
 	@Override
-	public String getVersion() {
-		return "1.5.2-1";
-	}
-
-	@Override
 	public String getName() {
 		return "mobEgg";
 	}
@@ -56,9 +51,14 @@ public class mod_IME_mobEgg extends BaseMod {
 	}
 	
 	@Override
+	public String getVersion() {
+		return "1.5.2-2";
+	}
+
+	@Override
 	public void load() {
 		// MMMLibのRevisionチェック
-		MMM_Helper.checkRevision("1");
+		MMM_Helper.checkRevision("2");
 		
 		entityMap = new TreeMap<String, Entity>();
 		
@@ -107,9 +107,10 @@ public class mod_IME_mobEgg extends BaseMod {
 		if (classMobEgg == null) {
 			return;
 		}
-		int luid = MMM_Helper.getNextEntityID(false);
-		ModLoader.registerEntityID(classMobEgg, "mobEgg", luid);
-		ModLoader.addEntityTracker(this, classMobEgg, luid, 64, 10, true);
+		MMM_Helper.registerEntity(classMobEgg, "mobEgg", 0, this, 64, 10, true);
+//		int luid = MMM_Helper.getNextEntityID(false);
+//		ModLoader.registerEntityID(classMobEgg, "mobEgg", luid);
+//		ModLoader.addEntityTracker(this, classMobEgg, luid, 64, 10, true);
 		
 		
 		// GUI を開くキーの登録と名称変換テーブルの登録
@@ -143,7 +144,7 @@ public class mod_IME_mobEgg extends BaseMod {
 		if (mobNames.length <= index) return "";
 		return mobNames[index];
 	}
-
+/*
 	@Override
 	public Entity spawnEntity(int entityId, World world, double scaledX, double scaledY, double scaledZ) {
 		// Modloader下では独自に生成するので要らない。
@@ -160,7 +161,7 @@ public class mod_IME_mobEgg extends BaseMod {
 		}
 		return null;
 	}
-
+*/
 	// Modloader
 	@Override
 	public Packet23VehicleSpawn getSpawnPacket(Entity var1, int var2) {
