@@ -136,7 +136,7 @@ public class mod_IME_mobEgg extends BaseMod {
 	@Override
 	public void addRenderer(Map map) {
 		// “Š‚°‚½‚Æ‚«‚ÌRender‚ð’Ç‰Á
-		map.put(IME_EntityMobEgg.class, new IME_RenderMobEgg(Item.egg));
+		map.put(IME_EntityMobEgg.class, new IME_RenderMobEgg(mobegg));
 	}
 
 	public static String getInnerEntityName(int index) {
