@@ -16,7 +16,7 @@ public class IME_EntityMobEgg_Forge extends IME_EntityMobEgg implements IEntityA
 		super(world, d, d1, d2, itemstack);
 	}
 	
-	public IME_EntityMobEgg_Forge(World world, EntityLiving entityliving, ItemStack itemstack) {
+	public IME_EntityMobEgg_Forge(World world, EntityLivingBase entityliving, ItemStack itemstack) {
 		super(world, entityliving, itemstack);
 	}
 
@@ -31,7 +31,7 @@ public class IME_EntityMobEgg_Forge extends IME_EntityMobEgg implements IEntityA
 		int lthrower = data.readInt();
 		if (lthrower != 0) {
 			Entity lentity = worldObj.getEntityByID(lthrower);
-			if (lentity instanceof EntityLiving) {
+			if (lentity instanceof EntityLivingBase) {
 				thrower = (EntityLiving)lentity;
 			}
 		}

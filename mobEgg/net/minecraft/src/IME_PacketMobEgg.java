@@ -1,42 +1,40 @@
 package net.minecraft.src;
 
+import java.io.DataInput;
 import java.io.DataInputStream;
+import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 
-import net.minecraft.client.Minecraft;
-
 public class IME_PacketMobEgg extends Packet23VehicleSpawn {
 
 	public int damage;
-	
-	
+
+
 	public IME_PacketMobEgg(Entity par1Entity, int par2, int par3) {
 		super(par1Entity, par2, par3);
 		
 		damage = ((IME_EntityMobEgg)par1Entity).eggItemStack.getItemDamage();
 	}
-	
+
 	@Override
-	public void readPacketData(DataInputStream par1DataInputStream)
-			throws IOException {
-		super.readPacketData(par1DataInputStream);
-		damage = par1DataInputStream.readInt();
+	public void readPacketData(DataInput par1DataInput) throws IOException {
+		super.readPacketData(par1DataInput);
+		damage = par1DataInput.readInt();
 	}
-	
+
 	@Override
-	public void writePacketData(DataOutputStream par1DataOutputStream)
-			throws IOException {
-		super.writePacketData(par1DataOutputStream);
-		par1DataOutputStream.writeInt(damage);
+	public void writePacketData(DataOutput par1DataOutput) throws IOException {
+		super.writePacketData(par1DataOutput);
+		par1DataOutput.writeInt(damage);
 	}
-	
+
 	@Override
 	public int getPacketSize() {
 		return super.getPacketSize() + 4;
 	}
-	
+
 	@Override
 	public void processPacket(NetHandler par1NetHandler) {
 		if (par1NetHandler instanceof NetClientHandler) {
@@ -60,7 +58,7 @@ public class IME_PacketMobEgg extends Packet23VehicleSpawn {
 			lentity.entityId = this.entityId;
 			
 			Entity le = (mc.thePlayer.entityId == throwerEntityId) ? mc.thePlayer : lworld.getEntityByID(throwerEntityId);
-			if (le instanceof EntityLiving) {
+			if (le instanceof EntityLivingBase) {
 //				lentity.thrower = (EntityLiving)le;
 			}
 			

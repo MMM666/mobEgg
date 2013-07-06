@@ -1,18 +1,9 @@
 package net.minecraft.src;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.TreeMap;
-
-import net.minecraft.client.Minecraft;
 
 public class mod_IME_mobEgg extends BaseMod {
 
@@ -52,13 +43,13 @@ public class mod_IME_mobEgg extends BaseMod {
 	
 	@Override
 	public String getVersion() {
-		return "1.5.2-2";
+		return "1.6.1-1";
 	}
 
 	@Override
 	public void load() {
 		// MMMLibのRevisionチェック
-		MMM_Helper.checkRevision("2");
+		MMM_Helper.checkRevision("1");
 		
 		entityMap = new TreeMap<String, Entity>();
 		
@@ -93,7 +84,7 @@ public class mod_IME_mobEgg extends BaseMod {
 		}
 		
 		// アイテムの作成
-		mobegg = new IME_ItemMobEgg(ItemID - 256).setUnlocalizedName("MobEgg").setCreativeTab(CreativeTabs.tabMisc);
+		mobegg = new IME_ItemMobEgg(ItemID - 256).setUnlocalizedName("MobEgg").func_111206_d("spawn_egg").setCreativeTab(CreativeTabs.tabMisc);
 		ModLoader.addName(mobegg, "MobEgg");
 		for (int i = 0; i < 16; i++) {
 			// レシピの追加
@@ -144,29 +135,12 @@ public class mod_IME_mobEgg extends BaseMod {
 		if (mobNames.length <= index) return "";
 		return mobNames[index];
 	}
-/*
-	@Override
-	public Entity spawnEntity(int entityId, World world, double scaledX, double scaledY, double scaledZ) {
-		// Modloader下では独自に生成するので要らない。
-		if (!MMM_Helper.isForge) return null;
-		
-		try {
-			Constructor<IME_EntityMobEgg> lconstructor = classMobEgg.getConstructor(World.class);
-			IME_EntityMobEgg lentity = lconstructor.newInstance(world);
-			lentity.entityId = entityId;
-			lentity.setLocationAndAngles(scaledX, scaledY, scaledZ, 0F, 0F);
-			
-			return lentity;
-		} catch (Exception e) {
-		}
-		return null;
-	}
-*/
+
 	// Modloader
 	@Override
 	public Packet23VehicleSpawn getSpawnPacket(Entity var1, int var2) {
 		// 専用卵を発生させる
-		EntityLiving lentity = ((IME_EntityMobEgg)var1).thrower;
+		EntityLivingBase lentity = ((IME_EntityMobEgg)var1).thrower;
 		return new IME_PacketMobEgg(var1, 0, lentity == null ? 0 : lentity.entityId);
 	}
 

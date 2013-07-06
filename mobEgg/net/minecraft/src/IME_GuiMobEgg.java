@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import net.minecraft.client.Minecraft;
-
 import org.lwjgl.input.Keyboard;
 
 public class IME_GuiMobEgg extends GuiScreen {
@@ -107,20 +105,20 @@ public class IME_GuiMobEgg extends GuiScreen {
 			itemstack2.setItemDamage(k);
 			int x = (width / 2 - 154) + (k % 2) * 160;
 			int y = height / 6 + 24 * (k >> 1) - 22;
-			itemRenderer.renderItemIntoGUI(mc.fontRenderer, mc.renderEngine,
-					itemstack, x, y);
-			itemRenderer.renderItemOverlayIntoGUI(mc.fontRenderer,
-					mc.renderEngine, itemstack, x, y);
-			itemRenderer.renderItemIntoGUI(mc.fontRenderer, mc.renderEngine,
-					itemstack2, x + 131, y);
-			itemRenderer.renderItemOverlayIntoGUI(mc.fontRenderer,
-					mc.renderEngine, itemstack2, x + 131, y);
+			itemRenderer.renderItemIntoGUI(
+					mc.fontRenderer, mc.func_110434_K(), itemstack, x, y);
+			itemRenderer.renderItemOverlayIntoGUI(
+					mc.fontRenderer, mc.func_110434_K(), itemstack, x, y);
+			itemRenderer.renderItemIntoGUI(
+					mc.fontRenderer, mc.func_110434_K(), itemstack2, x + 131, y);
+			itemRenderer.renderItemOverlayIntoGUI(
+					mc.fontRenderer, mc.func_110434_K(), itemstack2, x + 131, y);
 		}
 	}
 
 	public static void saveParamater() {
 		// mobEgg等の選択情報をcfgファイルに保存
-		File cfgdir = new File(Minecraft.getMinecraftDir(), "/config/");
+		File cfgdir = new File(MMM_FileManager.minecraftDir, "/config/");
 		if (cfgdir.exists()) {
 			File file = new File(cfgdir, (new StringBuilder(String.valueOf(mod_IME_mobEgg.class.getSimpleName()))).append(".cfg").toString());
 			if (file.exists() && file.canRead() && file.canWrite()) {

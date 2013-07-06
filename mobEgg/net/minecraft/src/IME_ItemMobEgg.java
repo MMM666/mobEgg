@@ -22,9 +22,10 @@ public class IME_ItemMobEgg extends ItemEgg {
 		if(!world.isRemote) {
 			IME_EntityMobEgg lentity = null;
 			try {
-				Constructor<IME_EntityMobEgg> lconstructor = mod_IME_mobEgg.classMobEgg.getConstructor(World.class, EntityLiving.class, ItemStack.class);
+				Constructor<IME_EntityMobEgg> lconstructor = mod_IME_mobEgg.classMobEgg.getConstructor(World.class, EntityLivingBase.class, ItemStack.class);
 				lentity = lconstructor.newInstance(world, entityplayer, new ItemStack(itemstack.getItem(), 1, itemstack.getItemDamage()));
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			world.spawnEntityInWorld(lentity);
 		}
@@ -38,7 +39,7 @@ public class IME_ItemMobEgg extends ItemEgg {
 
 	@Override
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
-		float[] lf = EntitySheep.fleeceColorTable[BlockCloth.getBlockFromDye(par1ItemStack.getItemDamage())];
+		float[] lf = EntitySheep.fleeceColorTable[~(par1ItemStack.getItemDamage()) & 15];
 		return (((int)(lf[0] * 255) & 0xff) << 16) | (((int)(lf[1] * 255) & 0xff) << 8) | (((int)(lf[2] * 255) & 0xff));
 	}
 
@@ -57,12 +58,6 @@ public class IME_ItemMobEgg extends ItemEgg {
 		for (int i = 0; i < 16; i++) {
 			par3List.add(new ItemStack(mod_IME_mobEgg.mobegg, 1, i));
 		}
-	}
-
-	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
-//		super.registerIcons(par1IconRegister);
-		itemIcon = par1IconRegister.registerIcon("monsterPlacer");
 	}
 
 }

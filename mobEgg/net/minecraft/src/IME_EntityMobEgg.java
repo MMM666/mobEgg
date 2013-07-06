@@ -12,7 +12,7 @@ import javax.swing.text.MaskFormatter;
 public class IME_EntityMobEgg extends EntityThrowable {
 	
 	public ItemStack eggItemStack;
-	public EntityLiving thrower;
+	public EntityLivingBase thrower;
 
 	// Method
 	public IME_EntityMobEgg(World world) {
@@ -25,7 +25,7 @@ public class IME_EntityMobEgg extends EntityThrowable {
 		eggItemStack = itemstack;
 	}
 	
-	public IME_EntityMobEgg(World world, EntityLiving entityliving, ItemStack itemstack) {
+	public IME_EntityMobEgg(World world, EntityLivingBase entityliving, ItemStack itemstack) {
 		super(world, entityliving);
 		
 		thrower = entityliving;
@@ -56,7 +56,8 @@ public class IME_EntityMobEgg extends EntityThrowable {
 			// EntityList‚©‚çµŠ«‘ÎÛ‚ğ’Šo‚·‚é
 			Entity entity = EntityList.createEntityByName(s, worldObj);
 			if (entity instanceof EntityLiving) {
-				((EntityLiving)entity).initCreature();
+				// ‰Šúİ’è’l‚ğ—^‚¦‚é
+				((EntityLiving)entity).func_110161_a(null);
 			}
 			if (entity != null) {
 				entity.setLocationAndAngles(posX, posY + 1.0F, posZ, rotationYaw, 0.0F);
