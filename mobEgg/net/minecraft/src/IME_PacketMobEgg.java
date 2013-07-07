@@ -15,7 +15,7 @@ public class IME_PacketMobEgg extends Packet23VehicleSpawn {
 	public IME_PacketMobEgg(Entity par1Entity, int par2, int par3) {
 		super(par1Entity, par2, par3);
 		
-		damage = ((IME_EntityMobEgg)par1Entity).eggItemStack.getItemDamage();
+		damage = par1Entity == null ? 0 : ((IME_EntityMobEgg)par1Entity).getItemDamage();
 	}
 
 	@Override

@@ -38,6 +38,9 @@ public class IME_EntityMobEgg extends EntityThrowable {
 		if(movingobjectposition.entityHit != null) {
 			if(!movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower), 0));
 		}
+		if (eggItemStack == null) {
+			return;
+		}
 		if(!worldObj.isRemote) {
 			// íÖíeéûèàóù
 			String s = mod_IME_mobEgg.getInnerEntityName(eggItemStack.getItemDamage());
@@ -69,6 +72,10 @@ public class IME_EntityMobEgg extends EntityThrowable {
 			worldObj.spawnParticle("snowballpoof", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
 		}
 		
+	}
+
+	public int getItemDamage() {
+		return eggItemStack == null ? 0 : eggItemStack.getItemDamage();
 	}
 
 }
