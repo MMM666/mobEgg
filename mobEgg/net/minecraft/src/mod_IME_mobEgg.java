@@ -14,14 +14,14 @@ public class mod_IME_mobEgg extends BaseMod {
 	@MLProp(info="RandomEgg Selection.")					// ランダム対象のリスト
 	public static String randomList = "";
 	@MLProp(info="GUI Enable(dont't use GUI is false)")		// GUIの有効無効
-	public static boolean guiEnable = true;		
+	public static boolean guiEnable = true;
 	@MLProp(info="Exclusion mob List.")						// ランダム対象のリスト
 	public static String exclusionList = "";
 
 	// コンフィグ項目を作るときは@MLPropを有効にする
 //	@MLProp(info="Crafting ItemID")
 	public static int CraftID = 344;	// 卵
-
+	
 	
 	public static Item mobegg;
 	public static Map<String, Entity> entityMap;
@@ -35,15 +35,15 @@ public class mod_IME_mobEgg extends BaseMod {
 	public String getName() {
 		return "mobEgg";
 	}
-	
+
 	@Override
 	public String getPriorities() {
 		return "required-after:mod_MMM_MMMLib";
 	}
-	
+
 	@Override
 	public String getVersion() {
-		return "1.6.1-1";
+		return "1.6.2-1";
 	}
 
 	@Override
@@ -99,10 +99,6 @@ public class mod_IME_mobEgg extends BaseMod {
 			return;
 		}
 		MMM_Helper.registerEntity(classMobEgg, "mobEgg", 0, this, 64, 10, true);
-//		int luid = MMM_Helper.getNextEntityID(false);
-//		ModLoader.registerEntityID(classMobEgg, "mobEgg", luid);
-//		ModLoader.addEntityTracker(this, classMobEgg, luid, 64, 10, true);
-		
 		
 		// GUI を開くキーの登録と名称変換テーブルの登録
 		if (guiEnable && MMM_Helper.isClient) {
@@ -115,7 +111,7 @@ public class mod_IME_mobEgg extends BaseMod {
 		}
 		
 		// ディスペンサー
-		ModLoader.addDispenserBehavior(mobegg, new IME_BehaviorMobEggDispense(null));
+		ModLoader.addDispenserBehavior(mobegg, new IME_BehaviorMobEggDispense());
 	}
 
 	@Override

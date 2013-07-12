@@ -49,7 +49,7 @@ public class IME_GuiMobEggRandom extends MMM_GuiMobSelect {
 
 	@Override
 	public void clickSlot(int pIndex, boolean pDoubleClick, String pName,
-			EntityLiving pEntity) {
+			EntityLivingBase pEntity) {
 		if (pDoubleClick) {
 			String s = entityMap.keySet().toArray()[pIndex].toString();
 			boolean rselect = mod_IME_mobEgg.randomMap.get(s);

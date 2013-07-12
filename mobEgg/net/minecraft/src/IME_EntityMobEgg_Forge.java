@@ -32,7 +32,7 @@ public class IME_EntityMobEgg_Forge extends IME_EntityMobEgg implements IEntityA
 		if (lthrower != 0) {
 			Entity lentity = worldObj.getEntityByID(lthrower);
 			if (lentity instanceof EntityLivingBase) {
-				thrower = (EntityLiving)lentity;
+				thrower = (EntityLivingBase)lentity;
 			}
 		}
 		eggItemStack = new ItemStack(mod_IME_mobEgg.mobegg, 1, data.readInt());

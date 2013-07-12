@@ -6,16 +6,12 @@ import net.minecraft.server.MinecraftServer;
 
 public class IME_BehaviorMobEggDispense extends BehaviorProjectileDispense {
 
-	final MinecraftServer mcServer;
 	protected ItemStack fitemstack;
 
 
-	public IME_BehaviorMobEggDispense(MinecraftServer par1MinecraftServer) {
-		this.mcServer = par1MinecraftServer;
-	}
-
 	@Override
 	public ItemStack dispenseStack(IBlockSource par1iBlockSource, ItemStack par2ItemStack) {
+		// ’†g‚ğ¯•Ê‚·‚é‚½‚ß‚ÉItemStack‚ğŠm•Û
 		fitemstack = par2ItemStack;
 		return super.dispenseStack(par1iBlockSource, par2ItemStack);
 	}
